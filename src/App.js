@@ -1,10 +1,9 @@
 import React,{Component} from 'react';
-import {BrowserRouter as Router,Route} from "react-router-dom";
 
 import tasks from "./sample/tasks.json";
 import Tasks from "./components/Tasks"
 import Taskform from './components/Taskform';
-import Post from './components/Posts'
+
 class App extends Component{
   state={
     tasks:tasks
