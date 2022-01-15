@@ -40,7 +40,7 @@ class App extends Component{
   }
   render(){
     return <div>
-      <h1>To Do List</h1>
+      <h1>Lista de tareas</h1>
       <Taskform addTask={this.addTask} />
       <Tasks tasks={this.state.tasks} deleteTask={this.deleteTask} checkDone={this.checkDone} /> 
 
