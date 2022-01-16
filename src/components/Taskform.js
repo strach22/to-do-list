@@ -3,13 +3,13 @@ import React, {Component} from 'react';
 
 export default class Taskform extends Component {
     state={
-        title:"",
         description:""
     }
 
     onSubmit=e=>{
         e.preventDefault();
         this.props.addTask(this.state.description);
+        this.setState({description:""})
     }
 
     onChange=e=>{
