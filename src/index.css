@@ -1,0 +1,10 @@
+body{
+    background-color: lightblue; 
+    color: black;
+    font-family: sans-serif;
+    padding: 10px;
+    text-align: center;
+}
+div{
+    align-content: center;
+}

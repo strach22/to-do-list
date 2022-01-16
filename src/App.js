@@ -16,10 +16,15 @@ class App extends Component{
       }
     }
   }
-  addTask=(tittle,description)=>{
+  findTitle=()=>{
+    const ldo = this.state.tasks[this.state.tasks.length-1].title;
+    const splitted=ldo.split(" ");
+    return "Tarea "+(parseInt(splitted.pop())+1);
+  }
+  addTask=(description)=>{
     const newTask={
       "id":this.findId(),
-      "title":tittle,
+      "title":this.findTitle(),
       "description":description,
       "done":false
     }
