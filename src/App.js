@@ -17,6 +17,7 @@ class App extends Component{
     }
   }
   findTitle=()=>{
+    if(this.state.tasks.length===0) return "Tarea 1";
     const ldo = this.state.tasks[this.state.tasks.length-1].title;
     const splitted=ldo.split(" ");
     return "Tarea "+(parseInt(splitted.pop())+1);
