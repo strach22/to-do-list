@@ -6,10 +6,11 @@ import Taskform from './components/Taskform';
 
 class App extends Component{
   state={
-    tasks:tasks
+    tasks:[]
   }
-  lastTasks=()=>{
+  loadTasks=()=>{
     if(localStorage.length>0) this.setState({tasks:JSON.parse(localStorage.tasks)})
+    else this.setState({tasks:tasks})
   }
   findId=()=>{
     const ids=this.state.tasks.map(e=>e.id)
@@ -51,7 +52,7 @@ class App extends Component{
     this.setState({tasks:newTasks})
   }
   componentDidMount(){
-    this.lastTasks();
+    this.loadTasks();
   }
   render(){
     return <div>
