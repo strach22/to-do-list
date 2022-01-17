@@ -8,6 +8,9 @@ class App extends Component{
   state={
     tasks:tasks
   }
+  lastTasks=()=>{
+    if(localStorage.length>0) this.setState({tasks:JSON.parse(localStorage.tasks)})
+  }
   findId=()=>{
     const ids=this.state.tasks.map(e=>e.id)
     for(let i=0;i<this.state.tasks.length+1;i++){
@@ -22,7 +25,7 @@ class App extends Component{
     const splitted=ldo.split(" ");
     return "Tarea "+(parseInt(splitted.pop())+1);
   }
-  addTask=(description)=>{
+  addTask=description=>{
     const newTask={
       "id":this.findId(),
       "title":this.findTitle(),
@@ -31,7 +34,10 @@ class App extends Component{
     }
     this.setState({
       tasks:[...this.state.tasks,newTask]
-    })
+    });
+  }
+  saveTasks=()=>{
+    localStorage.setItem("tasks",JSON.stringify(this.state.tasks))
   }
   deleteTask=id=>{
     const newTasks=this.state.tasks.filter(task=>task.id!==id)
@@ -44,11 +50,19 @@ class App extends Component{
     })
     this.setState({tasks:newTasks})
   }
+  componentDidMount(){
+    this.lastTasks();
+  }
   render(){
     return <div>
       <h1>Lista de tareas</h1>
       <Taskform addTask={this.addTask} />
-      <Tasks tasks={this.state.tasks} deleteTask={this.deleteTask} checkDone={this.checkDone} /> 
+      <Tasks 
+        tasks={this.state.tasks} 
+        deleteTask={this.deleteTask} 
+        checkDone={this.checkDone} 
+        saveTasks={this.saveTasks}
+      /> 
 
     </div>
   }

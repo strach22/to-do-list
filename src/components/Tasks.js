@@ -11,6 +11,7 @@ class Tasks extends Component{
                 key={task.id} 
                 deleteTask={this.props.deleteTask}
                 checkDone={this.props.checkDone}
+                saveTasks={this.props.saveTasks}
             /> 
         ))
     }
